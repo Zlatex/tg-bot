@@ -13,4 +13,13 @@ app.post('/send-notify', (request, response) => {
     bot.telegram.sendMessage(info.to,info.message,info.url ? Extra.markup(keyboard) : {});
     response.sendStatus(200);
 })
+
+bot.start((ctx)=>{
+    ctx.reply(`
+    \`${ctx.message.chat.id}\`\nAdd this to your profile settings in 'Telegram ID' input 
+    `,Extra.markdown(true));
+})
+
 app.listen(3131, () => {console.log('Marketplace app listening on port 3131!')})
+
+bot.launch();
